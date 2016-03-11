@@ -1,0 +1,195 @@
+Begin Data Section
+0 0       # program counter
+1 0       # stack pointer
+2 0
+3 0
+4 0
+5 0
+6 0
+7 0
+8 0
+9 0
+10 0       # memory indexes 0-20 are reserved.
+11 0
+12 0
+13 0
+14 0
+15 0
+16 0
+17 0
+18 0
+19 0
+20 0      #  Memory location  21 contains number N.  24 contains start index of the numbers to be sorted
+21 100     # N=100            number N is given at memory index=21  
+22 0     
+23 0      
+24 60      #numbers to be sorted starts at index 60
+25 0
+26 0
+27 0
+28 0
+29 0
+30 0
+31 0
+32 0
+33 0
+34 0
+35 0
+36 0
+37 0
+38 0
+39 0      # you may use locations 25 to 59 as registers
+40 0
+41 0
+42 0
+43 0
+44 0
+45 0
+46 0
+47 0
+48 0
+49 0
+50 0
+51 0
+52 0
+53 0
+54 0
+55 0
+56 0
+57 0
+58 0
+59 0
+60 263    # Numbers to be sorted starts at memory index 60
+61 249
+62 257
+63 226
+64 79
+65 276
+66 97
+67 230
+68 208
+69 178
+70 240
+71 156
+72 286
+73 131
+74 163
+75 194
+76 71
+77 79
+78 240
+79 66
+80 161
+81 199
+82 204
+83 172
+84 262
+85 159
+86 221
+87 118
+88 139
+89 257
+90 225
+91 221
+92 230
+93 67
+94 91
+95 139
+96 71
+97 271
+98 141
+99 267
+100 180
+101 69
+102 239
+103 228
+104 178
+105 290
+106 287
+107 112
+108 62
+109 297
+110 143
+111 70
+112 206
+113 187
+114 94
+115 163
+116 118
+117 223
+118 63
+119 153
+120 130
+121 147
+122 191
+123 182
+124 62
+125 175
+126 261
+127 289
+128 65
+129 251
+130 103
+131 54
+132 282
+133 226
+134 244
+135 280
+136 142
+137 222
+138 119
+139 281
+140 297
+141 127
+142 248
+143 262
+144 61
+145 156
+146 234
+147 284
+148 109
+149 188
+150 288
+151 154
+152 131
+153 270
+154 163
+155 186
+156 151
+157 300
+158 98
+159 82
+End Data Section
+Begin Instruction Section
+0 CPY 24 27     		# 27 adresinde a[i] degeri var
+1 CPY 24 28    		 	# 29 adresinde a[j] degeri var 
+2 SET 0 53 	  		#i = 0
+3 SET 0 54 	  		#j = 0
+4 CPY 21 25     		# N= size of array  
+5 CPY 53 26 			# i degerini kopyalar 26 adresine
+6 SUBI 25 26    		# N - i
+7 JIF 26 30			# 26 adresindeki deger 0 a esit veya kucuk ise HLT a gider
+8 ADD 1 53       		# i edegerini 1 artır
+9 SET 0 26			# 26 adresini sifirlar
+10 CPY 54 26			# j degrinin 26 da yedekler
+11 SUBI 25 26     		# N - j
+12 JIF 26 26			# j degri N den kucuk veya esit ise 26 inci instructiona gider
+13 ADD 1 54       		# j edegerini 1 artır
+14 SET 0 26			# 26 adresine 0 yazar 	
+15 CPYI 27 26			# 27 adresindeki adres degrini 26 inci adrese kopyala
+16 CPYI 28 29			# 28 adresindeki adresin degrini alir ve 29 adresine kopyalar
+17 SUBI 29 26 		 	# a[j] - a[i]
+18 JIF 26 24            	# 26 adresindeki deger sifira esit veya kucuk ise 21 gider
+19 CPYI 27 26			# 27 nin iceriğindeki adresin degerini 26 adresine kopyalar	
+20 CPYI2 29 27			# 29 un içindeki degri,27 inin icindeki adrese kopyalar	
+21 CPYI2 26 28			# 26 adresindeki degeri,28 in içindeki adrese kopyalar		
+22 ADD 1 28 			# a[j + 1]
+23 SET 9 0  			# pc counter 9 a set edilir 
+24 ADD 1 28            		# a[j + 1]
+25 SET 9 0			# pc counter 9 a set eder	
+26 ADD 1 27 			# 27 adresindeki deger 1 artilir
+27 CPY 24 28 			# 24 adresindeki deger 28 adresine kopyalanir
+28 SET 0 54   			# 54 adresini 0 a set et
+29 SET 5 0 			# pc counteri 5 set et
+30 HLT
+End Instruction Section
